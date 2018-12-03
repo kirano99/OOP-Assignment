@@ -1,0 +1,2 @@
+﻿  ConsoleApplication2.cpp
+e:\users\kiran\documents\uni work gdrive\year 2\object oriented programming\assignment stuff\useful cpp projects\cpp\consoleapplication2.cpp(44): fatal error C1010: unexpected end of file while looking for precompiled header. Did you forget to add '#include "stdafx.h"' to your source?
