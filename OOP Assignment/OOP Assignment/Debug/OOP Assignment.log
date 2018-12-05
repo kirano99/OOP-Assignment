@@ -1,9 +1,2 @@
 ﻿  OOP Assignment.cpp
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(40): error C2079: 'myfile' uses undefined class 'std::basic_ifstream<char,std::char_traits<char>>'
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(40): error C2440: 'initializing': cannot convert from 'char *' to 'int'
-  c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(40): note: There is no context in which this conversion is possible
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(47): error C2297: '>>': illegal, right operand has type 'double'
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(47): warning C4552: '>>': result of expression not used
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(64): error C2601: 'write_pgm': local function definitions are illegal
-  c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(37): note: this line contains a '{' which has not yet been matched
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(37): fatal error C1075: '{': no matching token found
+  OOP Assignment.vcxproj -> C:\Users\User\Documents\GitHub\OOP-Assignment\OOP Assignment\Debug\OOP Assignment.exe

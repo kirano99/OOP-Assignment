@@ -4,10 +4,6 @@
 
 using namespace std;
 
-int main()
-{
-
-}
 
 // Reads .txt file representing an image of R rows and C Columns stored in filename 
 // and converts it to a 1D array of doubles of size R*C
