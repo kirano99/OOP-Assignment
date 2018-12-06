@@ -47,7 +47,6 @@ int main(){
 
 
 
-
 	for (int i = 0; i <= baserows - wallyrows; i++) {
 		for (int j = 0; j <= basecols - wallycols; j++) {
 
