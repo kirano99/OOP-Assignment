@@ -5,12 +5,13 @@
 using namespace std;
 
 
-double CalcSSD(vector<vector<double>*> matrix1[3][3], vector<vector<double>*> matrix2[3][3]) {
+double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums) {
 	double SumSquareDiff = 0;
 	double difference = 0;
 	for (int i = 0; i <= 3 - 1; i++) {
 		for (int j = 0; j <= 3 - 1; j++) {
-			difference = (*matrix1[i])[j] - (*matrix2[i])[j];
+			int k = i * wallycolums + j;
+			difference = matrix1[k] - matrix2[k];
 			SumSquareDiff += difference * difference;
 		}
 	}
@@ -31,7 +32,7 @@ int main(){
 		{ 6,1,8,3,8,2,6,4,8,9,9 }
 	};
 
-	double wallyar[wallyrows][wallycols] = {
+	double wallyarray[wallyrows][wallycols] = {
 
 		{7,2,9},
 		{2,4,6},
@@ -39,10 +40,32 @@ int main(){
 
 	};
 
-	vector<vector<double>> baseimagear[baserows][basecols];
+	vector<double> baseimagear;
+	vector<double> wallyar;
 
+	for (int i = 0; i <= baserows - 1; i++) {
+		for (int j = 0; j <= basecols - 1; j++) {
+			int k = i * basecols + j;
+			baseimagear.push_back(baseimagearray[i][j]);
+		}
+	}
 
+	for (int i = 0; i <= wallyrows - 1; i++) {
+		for (int j = 0; j <= wallycols - 1; j++) {
+			int k = i * wallycols + j;
+			wallyar.push_back(wallyarray[i][j]);
+		}
+	}
 
+	//k = i x N + j
+
+	//k = (N x I) + J
+
+	//I = (k - j) / N
+
+	//J = (N x I) + k
+
+	//Where I = num1 & J = num2 & N = number of columns in A
 
 
 
@@ -50,18 +73,18 @@ int main(){
 	for (int i = 0; i <= baserows - wallyrows; i++) {
 		for (int j = 0; j <= basecols - wallycols; j++) {
 
-			vector<vector<double>> tempmatrix[wallyrows][wallycols];
+			vector <double> tempmatrix;
 
 			for (int a = 0; a <= wallyrows - 1; a++) {
 				for (int b = 0; b <= wallycols - 1; b++) {
 
-					tempmatrix[a][b] = baseimagear[i + a][j + b];
-
+					tempmatrix.push_back(baseimagear[((i + a) * basecols + (j + b))]);
+						
 				}
 			}
-			double tempans = CalcSSD(wallyar, tempmatrix);
+			double tempans = CalcSSD(wallyar, tempmatrix, wallycols);
 			cout << tempans << endl;
-			memset(tempmatrix, 0, sizeof(tempmatrix[0][0]) * wallyrows * wallycols);
+			tempmatrix.clear();
 		};
 	};
 }
