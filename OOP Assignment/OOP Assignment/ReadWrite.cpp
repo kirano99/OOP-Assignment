@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -32,6 +33,7 @@ double* read_text(char *fileName, int sizeR, int sizeC)
 
 	return data;
 
+}
 
 	// Converts a 1D array of doubles of size R*C to .pgm image of R rows and C Columns 
 	// and stores .pgm in filename

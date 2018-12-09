@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 
@@ -19,6 +18,10 @@ double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums) 
 }
 
 int main(){
+
+	//k = i x N + j
+
+	//Where I = num1 & J = num2 & N = number of columns in A
 
 	const int baserows = 4;
 	const int basecols = 11;
@@ -56,18 +59,6 @@ int main(){
 			wallyar.push_back(wallyarray[i][j]);
 		}
 	}
-
-	//k = i x N + j
-
-	//k = (N x I) + J
-
-	//I = (k - j) / N
-
-	//J = (N x I) + k
-
-	//Where I = num1 & J = num2 & N = number of columns in A
-
-
 
 
 	for (int i = 0; i <= baserows - wallyrows; i++) {
