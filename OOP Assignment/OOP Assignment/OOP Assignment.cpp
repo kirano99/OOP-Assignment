@@ -1,14 +1,17 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "MainHeader.h"
+
+
 using namespace std;
 
 
 double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums) {
 	double SumSquareDiff = 0;
 	double difference = 0;
-	for (int i = 0; i <= 3 - 1; i++) {
-		for (int j = 0; j <= 3 - 1; j++) {
+	for (int i = 0; i <= wallycolums - 1; i++) {
+		for (int j = 0; j <= wallycolums - 1; j++) {
 			int k = i * wallycolums + j;
 			difference = matrix1[k] - matrix2[k];
 			SumSquareDiff += difference * difference;
@@ -19,29 +22,35 @@ double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums) 
 
 int main(){
 
+
+	const int baserows = 12288;
+	const int basecols = 1024;
+	const int wallyrows = 49;
+	const int wallycols = 36;
+
+	char wallyfilename[15] = "Wally_grey.txt";
+	char * wallyfilenamept = wallyfilename;
+
+	char wallypgmfilename[15] = "Wally_grey.pgm";
+	char * wallypgmfilenamept = wallypgmfilename;
+	
+	double * wallyreturndata = read_text(wallyfilenamept,49,36);
+
+	write_pgm(wallypgmfilenamept, wallyreturndata, 49, 36, 255);
+
+	char basefilename[20] = "Cluttered_scene.txt";
+	char * basefilenamept = basefilename;
+
+	char basepgmfilename[20] = "Cluttered_scene.pgm";
+	char * basepgmfilenamept = basepgmfilename;
+
+	double * basereturndata = read_text(basefilenamept, 12288, 1024);
+
+	write_pgm(basepgmfilenamept, basereturndata, 12288, 1024, 255);
+
 	//k = i x N + j
 
 	//Where I = num1 & J = num2 & N = number of columns in A
-
-	const int baserows = 4;
-	const int basecols = 11;
-	const int wallyrows = 3;
-	const int wallycols = 3;
-
-	double baseimagearray[baserows][basecols] = {
-		{ 1,6,4,7,2,6,3,8,1,3,5 },
-		{ 5,8,2,4,8,7,2,9,1,3,6 },
-		{ 1,5,8,3,8,2,4,6,7,9,8 },
-		{ 6,1,8,3,8,2,6,4,8,9,9 }
-	};
-
-	double wallyarray[wallyrows][wallycols] = {
-
-		{7,2,9},
-		{2,4,6},
-		{2,6,4}
-
-	};
 
 	vector<double> baseimagear;
 	vector<double> wallyar;
@@ -49,14 +58,14 @@ int main(){
 	for (int i = 0; i <= baserows - 1; i++) {
 		for (int j = 0; j <= basecols - 1; j++) {
 			int k = i * basecols + j;
-			baseimagear.push_back(baseimagearray[i][j]);
+			baseimagear.push_back(basereturndata[k]);
 		}
 	}
 
 	for (int i = 0; i <= wallyrows - 1; i++) {
 		for (int j = 0; j <= wallycols - 1; j++) {
 			int k = i * wallycols + j;
-			wallyar.push_back(wallyarray[i][j]);
+			wallyar.push_back(wallyreturndata[k]);
 		}
 	}
 
