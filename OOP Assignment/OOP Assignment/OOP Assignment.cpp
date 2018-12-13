@@ -69,6 +69,7 @@ int main(){
 		}
 	}
 
+	double resultarry[5] = {};
 
 	for (int i = 0; i <= baserows - wallyrows; i++) {
 		for (int j = 0; j <= basecols - wallycols; j++) {
@@ -84,6 +85,11 @@ int main(){
 			}
 			double tempans = CalcSSD(wallyar, tempmatrix, wallycols);
 			cout << tempans << endl;
+			if (tempans < resultarry[0]) {
+				resultarry[0] = tempans;
+				resultarry[2] = i;
+				resultarry[3] = j;
+			}
 			tempmatrix.clear();
 		};
 	};
