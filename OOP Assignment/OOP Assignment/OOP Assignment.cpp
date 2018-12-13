@@ -69,19 +69,26 @@ int main(){
 		}
 	}
 
-	vector <double> tempmatrix;
+	double temp[wallyrows * wallycols];
 
 	int q = 190;
 	int w = 251;
+	int c = 0;
 
 
 	for (int a = 0; a <= wallyrows - 1; a++) {
 		for (int b = 0; b <= wallycols - 1; b++) {
-
-			tempmatrix.push_back(baseimagear[((q + a) * basecols + (w + b))]);
+			c++;
+			temp[c] = baseimagear[((q + a) * basecols + (w + b))];
 
 		}
 	}
+
+	char name[20] = "FOUND.pgm";
+	char * namept = name;
+	double * data = temp;
+
+	write_pgm(namept, data, wallyrows, wallycols, 255);
 
 
 

@@ -63,7 +63,7 @@ double* read_text(char *fileName, int sizeR, int sizeC)
 		myfile << sizeC << " " << sizeR << endl;
 		myfile << Q << endl;
 
-		//myfile.write(reinterpret_cast<char *>(image), (sizeR*sizeC) * sizeof(unsigned char));
+		myfile.write(reinterpret_cast<char *>(image), (sizeR*sizeC) * sizeof(unsigned char));
 
 		if (myfile.fail()) {
 			cout << "Can't write image " << filename << endl;
