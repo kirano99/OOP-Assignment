@@ -69,7 +69,26 @@ int main(){
 		}
 	}
 
+	vector <double> tempmatrix;
+
+	int q = 190;
+	int w = 251;
+
+
+	for (int a = 0; a <= wallyrows - 1; a++) {
+		for (int b = 0; b <= wallycols - 1; b++) {
+
+			tempmatrix.push_back(baseimagear[((q + a) * basecols + (w + b))]);
+
+		}
+	}
+
+
+
+
+
 	double resultarry[5] = {};
+	int comparisons = 0;
 
 	for (int i = 0; i <= baserows - wallyrows; i++) {
 		for (int j = 0; j <= basecols - wallycols; j++) {
@@ -84,7 +103,8 @@ int main(){
 				}
 			}
 			double tempans = CalcSSD(wallyar, tempmatrix, wallycols);
-			//cout << tempans << endl;
+			comparisons++;
+			cout << tempans << "\t \t \t" << comparisons << " comparisons out of " << "710372" << endl;
 			if (tempans < resultarry[0] || i == 0 && j == 0 ) {
 				resultarry[0] = tempans;
 				resultarry[1] = i;
@@ -93,4 +113,5 @@ int main(){
 			tempmatrix.clear();
 		};
 	};
+	cout << resultarry[0] << resultarry[1] << resultarry[2] << endl;
 }
