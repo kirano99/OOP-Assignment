@@ -23,7 +23,7 @@ double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums) 
 int main(){
 
 
-	const int baserows = 12288;
+	const int baserows = 768;
 	const int basecols = 1024;
 	const int wallyrows = 49;
 	const int wallycols = 36;
@@ -34,9 +34,9 @@ int main(){
 	char wallypgmfilename[15] = "Wally_grey.pgm";
 	char * wallypgmfilenamept = wallypgmfilename;
 	
-	double * wallyreturndata = read_text(wallyfilenamept,49,36);
+	double * wallyreturndata = read_text(wallyfilenamept, wallyrows, wallycols);
 
-	write_pgm(wallypgmfilenamept, wallyreturndata, 49, 36, 255);
+	write_pgm(wallypgmfilenamept, wallyreturndata, wallyrows, wallycols, 255);
 
 	char basefilename[20] = "Cluttered_scene.txt";
 	char * basefilenamept = basefilename;
@@ -44,9 +44,9 @@ int main(){
 	char basepgmfilename[20] = "Cluttered_scene.pgm";
 	char * basepgmfilenamept = basepgmfilename;
 
-	double * basereturndata = read_text(basefilenamept, 12288, 1024);
+	double * basereturndata = read_text(basefilenamept, baserows, basecols);
 
-	write_pgm(basepgmfilenamept, basereturndata, 12288, 1024, 255);
+	write_pgm(basepgmfilenamept, basereturndata, baserows, basecols, 255);
 
 	//k = i x N + j
 
@@ -84,11 +84,11 @@ int main(){
 				}
 			}
 			double tempans = CalcSSD(wallyar, tempmatrix, wallycols);
-			cout << tempans << endl;
-			if (tempans < resultarry[0]) {
+			//cout << tempans << endl;
+			if (tempans < resultarry[0] || i == 0 && j == 0 ) {
 				resultarry[0] = tempans;
-				resultarry[2] = i;
-				resultarry[3] = j;
+				resultarry[1] = i;
+				resultarry[2] = j;
 			}
 			tempmatrix.clear();
 		};
