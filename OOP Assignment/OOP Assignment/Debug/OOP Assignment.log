@@ -1,1 +1,6 @@
-﻿LINK : fatal error LNK1168: cannot open C:\Users\User\Documents\GitHub\OOP-Assignment\OOP Assignment\Debug\OOP Assignment.exe for writing
+﻿  OOP Assignment.cpp
+  ReadWrite.cpp
+e:\users\kiran\documents\github\oop-assignment\oop assignment\oop assignment\readwrite.cpp(44): warning C4101: 'j': unreferenced local variable
+  Generating Code...
+  LINK : E:\Users\kiran\Documents\GitHub\OOP-Assignment\OOP Assignment\Debug\OOP Assignment.exe not found or not built by the last incremental link; performing full link
+  OOP Assignment.vcxproj -> E:\Users\kiran\Documents\GitHub\OOP-Assignment\OOP Assignment\Debug\OOP Assignment.exe

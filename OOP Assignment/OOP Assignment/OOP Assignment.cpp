@@ -72,31 +72,6 @@ int main(){
 		}
 	}
 
-	double temp[wallyrows * wallycols];
-
-	int q = 144;
-	int w = 162;
-	int c = 0;
-
-
-	for (int a = 0; a <= wallyrows - 1; a++) {
-		for (int b = 0; b <= wallycols - 1; b++) {
-			c++;
-			temp[c] = baseimagear[((q + a) * basecols + (w + b))];
-
-		}
-	}
-
-	char name[20] = "FOUND.pgm";
-	char * namept = name;
-	double * data = temp;
-
-	write_pgm(namept, data, wallyrows, wallycols, 255);
-
-
-
-
-
 	double resultarry[5] = {};
 	int comparisons = 0;
 
@@ -124,4 +99,37 @@ int main(){
 		};
 	};
 	cout << resultarry[0] << resultarry[1] << resultarry[2] << "\n";
+
+
+
+	double temp[wallyrows * wallycols];
+
+	int q = 144;
+	int w = 162;
+	int c = 0;
+
+
+	for (int a = 0; a <= wallyrows - 1; a++) {
+		for (int b = 0; b <= wallycols - 1; b++) {
+			c++;
+			temp[c] = baseimagear[((q + a) * basecols + (w + b))];
+
+		}
+	}
+
+	char name[20] = "FOUND.pgm";
+	char * namept = name;
+	double * data = temp;
+
+	write_pgm(namept, data, wallyrows, wallycols, 255);
+
+
+
+
+
+
+
+
+
+
 }
