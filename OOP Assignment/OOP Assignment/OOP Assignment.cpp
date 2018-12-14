@@ -102,10 +102,19 @@ int main(){
 
 
 
-	double temp[wallyrows * wallycols];
 
-	int q = 144;
-	int w = 162;
+
+	//CODE BELOW WILL NOT COMPILE 
+	//STACK OVERFLOW
+
+
+
+
+	double temp[wallyrows * wallycols];
+	double highlightedscene[baserows * basecols];
+
+	int q = resultarry[1]; //SHOULD BE 144
+	int w = resultarry[2]; //SHOULD BE 162
 	int c = 0;
 
 
@@ -113,22 +122,29 @@ int main(){
 		for (int b = 0; b <= wallycols - 1; b++) {
 			c++;
 			temp[c] = baseimagear[((q + a) * basecols + (w + b))];
-
+			baseimagear[((q + a) * basecols + (w + b))] = 0;
 		}
 	}
 
-	char name[20] = "FOUND.pgm";
+
+	for (int e = 0; e <= baserows - 1; e++) {
+		for (int f = 0; f <= baserows - 1; f++) {
+			int k = e * basecols + f;
+			highlightedscene[k] = baseimagear[k];
+		}
+	}
+
+	char name[10] = "FOUND.pgm";
 	char * namept = name;
 	double * data = temp;
 
 	write_pgm(namept, data, wallyrows, wallycols, 255);
 
+	char name2[21] = "highlightedscene.pgm";
+	char * namept2 = name2;
+	double * data2 = highlightedscene;
 
-
-
-
-
-
+	write_pgm(namept2, data2, baserows, basecols, 255);
 
 
 
