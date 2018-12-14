@@ -7,12 +7,15 @@
 using namespace std;
 
 
-double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums) {
+double CalcSSD(vector<double> matrix1, vector<double> matrix2, int wallycolums, int wallyrows) {
 	double SumSquareDiff = 0;
 	double difference = 0;
-	for (int i = 0; i <= wallycolums - 1; i++) {
+	for (int i = 0; i <= wallycolums - 1; i++) {		//rows/columns??
 		for (int j = 0; j <= wallycolums - 1; j++) {
 			int k = i * wallycolums + j;
+			if (matrix1[k] == 255) {
+				matrix1[k] = matrix2[k];
+			}
 			difference = matrix1[k] - matrix2[k];
 			SumSquareDiff += difference * difference;
 		}
@@ -71,8 +74,8 @@ int main(){
 
 	double temp[wallyrows * wallycols];
 
-	int q = 190;
-	int w = 251;
+	int q = 144;
+	int w = 162;
 	int c = 0;
 
 
@@ -109,9 +112,9 @@ int main(){
 						
 				}
 			}
-			double tempans = CalcSSD(wallyar, tempmatrix, wallycols);
+			double tempans = CalcSSD(wallyar, tempmatrix, wallycols, wallyrows);
 			comparisons++;
-			cout << tempans << "\t \t \t" << comparisons << " comparisons out of " << "710372" << endl;
+			cout << tempans << "\t \t \t" << comparisons << " comparisons out of " << "710372" << "\n";
 			if (tempans < resultarry[0] || i == 0 && j == 0 ) {
 				resultarry[0] = tempans;
 				resultarry[1] = i;
@@ -120,5 +123,5 @@ int main(){
 			tempmatrix.clear();
 		};
 	};
-	cout << resultarry[0] << resultarry[1] << resultarry[2] << endl;
+	cout << resultarry[0] << resultarry[1] << resultarry[2] << "\n";
 }
