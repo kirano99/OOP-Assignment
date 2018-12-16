@@ -88,8 +88,8 @@ int main(){
 				}
 			}
 			double tempans = CalcSSD(wallyar, tempmatrix, wallycols, wallyrows);
-			comparisons++;
-			cout << tempans << "\t \t \t" << comparisons << " comparisons out of " << "710372" << "\n";
+			//comparisons++;
+			//cout << tempans << "\t \t \t" << comparisons << " comparisons out of " << "710372" << "\n";
 			if (tempans < resultarry[0] || i == 0 && j == 0 ) {
 				resultarry[0] = tempans;
 				resultarry[1] = i;
@@ -99,10 +99,6 @@ int main(){
 		};
 	};
 	cout << resultarry[0] << resultarry[1] << resultarry[2] << "\n";
-
-
-
-
 
 	//CODE BELOW WILL NOT COMPILE 
 	//STACK OVERFLOW
@@ -118,27 +114,18 @@ int main(){
 	int c = 0;
 
 
-	for (int a = 0; a <= wallyrows - 1; a++) {
-		for (int b = 0; b <= wallycols - 1; b++) {
-			c++;
-			temp[c] = baseimagear[((q + a) * basecols + (w + b))];
-			baseimagear[((q + a) * basecols + (w + b))] = 0;
-		}
-	}
-
-
 	for (int e = 0; e <= baserows - 1; e++) {
 		for (int f = 0; f <= baserows - 1; f++) {
+
 			int k = e * basecols + f;
 			highlightedscene[k] = baseimagear[k];
+
+			if (e >= q && f >= w && e < q + wallyrows && f < w + wallycols) {
+				highlightedscene[k] = 0;
+			}
+
 		}
 	}
-
-	char name[10] = "FOUND.pgm";
-	char * namept = name;
-	double * data = temp;
-
-	write_pgm(namept, data, wallyrows, wallycols, 255);
 
 	char name2[21] = "highlightedscene.pgm";
 	char * namept2 = name2;

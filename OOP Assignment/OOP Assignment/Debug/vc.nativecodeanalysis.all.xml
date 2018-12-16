@@ -1,14 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
     <SFA>
-      <FILEPATH>e:\users\kiran\documents\github\oop-assignment\oop assignment\oop assignment</FILEPATH>
+      <FILEPATH>c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment</FILEPATH>
       <FILENAME>oop assignment.cpp</FILENAME>
       <LINE>26</LINE>
       <COLUMN>4</COLUMN>
     </SFA>
     <DEFECTCODE>6262</DEFECTCODE>
-    <DESCRIPTION>Function uses '6305904' bytes of stack:  exceeds /analyze:stacksize '16384'.  Consider moving some data to heap.</DESCRIPTION>
+    <DESCRIPTION>Function uses '6305876' bytes of stack:  exceeds /analyze:stacksize '16384'.  Consider moving some data to heap.</DESCRIPTION>
     <FUNCTION>main</FUNCTION>
     <DECORATED>main</DECORATED>
     <FUNCLINE>26</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment</FILEPATH>
+      <FILENAME>readwrite.cpp</FILENAME>
+      <LINE>66</LINE>
+      <COLUMN>54</COLUMN>
+    </SFA>
+    <DEFECTCODE>26451</DEFECTCODE>
+    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
+    <FUNCTION>write_pgm</FUNCTION>
+    <DECORATED>?write_pgm@@YAXPADPANHHH@Z</DECORATED>
+    <FUNCLINE>41</FUNCLINE>
     <PATH></PATH>
   </DEFECT></DEFECTS>
