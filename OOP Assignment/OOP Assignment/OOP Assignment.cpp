@@ -74,6 +74,7 @@ public:
 		return cols;
 	}
 };
+
 class Matrix {
 public:
 	double * basereturndata;
@@ -182,7 +183,7 @@ int main(){
 			int k = e * basecols + f;
 			baseimgobj->highlightedscene[k] = baseimagear[k];
 
-			if (e >= q && f >= w && e < q + wallyrows && f < w + wallycols) {
+			if (e >= q && f >= w && e < q + wallyrows && f < w + wallycols && (f % 2 == 0 || e % 2 ==0) ) {
 				baseimgobj->highlightedscene[k] = 0;
 			}
 
