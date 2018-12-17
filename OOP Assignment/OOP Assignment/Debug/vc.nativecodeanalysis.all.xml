@@ -2,14 +2,14 @@
     <SFA>
       <FILEPATH>c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment</FILEPATH>
       <FILENAME>oop assignment.cpp</FILENAME>
-      <LINE>26</LINE>
+      <LINE>83</LINE>
       <COLUMN>4</COLUMN>
     </SFA>
     <DEFECTCODE>6262</DEFECTCODE>
-    <DESCRIPTION>Function uses '6305876' bytes of stack:  exceeds /analyze:stacksize '16384'.  Consider moving some data to heap.</DESCRIPTION>
+    <DESCRIPTION>Function uses '12597352' bytes of stack:  exceeds /analyze:stacksize '16384'.  Consider moving some data to heap.</DESCRIPTION>
     <FUNCTION>main</FUNCTION>
     <DECORATED>main</DECORATED>
-    <FUNCLINE>26</FUNCLINE>
+    <FUNCLINE>83</FUNCLINE>
     <PATH></PATH>
   </DEFECT><DEFECT>
     <SFA>

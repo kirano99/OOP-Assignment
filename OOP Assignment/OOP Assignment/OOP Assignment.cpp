@@ -2,13 +2,7 @@
 #include <string>
 #include <vector>
 #include "MainHeader.h"
-
-
 using namespace std;
-
-class Base_Image {
-
-};
 
 class NNS {
 public:
@@ -27,37 +21,76 @@ public:
 		}
 		return SumSquareDiff;
 	}
+
+	vector <double> tempmatrix;
+};
+
+class Base_Image{
+public:
+	double highlightedscene[786432];
 };
 
 class Ref_Image : public Base_Image {
+private:
+	int rows;
+	int cols;
+
 public:
-	const int rows = 49;
-	const int cols = 36;
+
+	Ref_Image() {
+		rows = 49;
+		cols = 36;
+		cout << "Ref_Image obj created" << endl;
+	}
+	virtual ~Ref_Image() {
+		cout << "Ref_Image obj deleted" << endl;
+	}
+	const int getrows() {
+		return rows;
+	}
+	const int getcols() {
+		return cols;
+	}
 };
 
 class Large_Image : public Base_Image {
 
 public:
-	const int rows = 768;
-	const int cols = 1024;
+	int rows;
+	int cols;
+
+	Large_Image() {
+		rows = 768;
+		cols = 1024;
+		cout << "Large_Image obj created" << endl;
+	}
+	virtual ~Large_Image() {
+		cout << "Large_Image obj deleted" << endl;
+	}
+	const int getrows() {
+		return rows;
+	}
+	const int getcols() {
+		return cols;
+	}
 };
 class Matrix {
-private:
-		int num1, num2;
-	public:
-		Matrix(int a, int b) { num1 = a; num2 = b; }
-
-		int operator /() {
-			return float(num1) + float(den2);
-		}
+public:
+	double * basereturndata;
+	double * wallyreturndata;
 };
 
 int main(){
 
 	Ref_Image wallyobj;
 	Large_Image baseobj;
+	Matrix* matrixobj = new Matrix;
 
-	int test = wallyobj.rows;
+	const int wallyrows = wallyobj.getrows();
+	const int wallycols = wallyobj.getcols();
+	const int baserows = baseobj.getrows();
+	const int basecols = baseobj.getcols();
+
 
 	char wallyfilename[15] = "Wally_grey.txt";
 	char * wallyfilenamept = wallyfilename;
@@ -65,9 +98,9 @@ int main(){
 	char wallypgmfilename[15] = "Wally_grey.pgm";
 	char * wallypgmfilenamept = wallypgmfilename;
 	
-	double * wallyreturndata = read_text(wallyfilenamept, wallyobj.rows, wallyobj.cols);
+	matrixobj->wallyreturndata = read_text(wallyfilenamept, wallyrows, wallycols);
 
-	write_pgm(wallypgmfilenamept, wallyreturndata, wallyobj.rows, wallyobj.cols, 255);
+	write_pgm(wallypgmfilenamept, matrixobj->wallyreturndata, wallyrows, wallycols, 255);
 
 	char basefilename[20] = "Cluttered_scene.txt";
 	char * basefilenamept = basefilename;
@@ -75,48 +108,52 @@ int main(){
 	char basepgmfilename[20] = "Cluttered_scene.pgm";
 	char * basepgmfilenamept = basepgmfilename;
 
-	double * basereturndata = read_text(basefilenamept, baseobj.rows, baseobj.cols);
+	matrixobj->basereturndata = read_text(basefilenamept, baserows, basecols);
 
-	write_pgm(basepgmfilenamept, basereturndata, baseobj.rows, baseobj.cols, 255);
+	write_pgm(basepgmfilenamept, matrixobj->basereturndata, baserows, basecols, 255);
 
 	//k = i x N + j
 
 	//Where I = num1 & J = num2 & N = number of columns in A
 
+	cout << "RUNNING: Execution usually takes 1-2 minutes. Please wait..." << endl;
+
 	vector<double> baseimagear;
 	vector<double> wallyar;
 
-	for (int i = 0; i <= baseobj.rows - 1; i++) {
-		for (int j = 0; j <= baseobj.cols - 1; j++) {
-			int k = i * baseobj.cols + j;
-			baseimagear.push_back(basereturndata[k]);
+	for (int i = 0; i <= baserows - 1; i++) {
+		for (int j = 0; j <= basecols - 1; j++) {
+			int k = i * basecols + j;
+			baseimagear.push_back(matrixobj->basereturndata[k]);
 		}
 	}
 
-	for (int i = 0; i <= wallyobj.rows - 1; i++) {
-		for (int j = 0; j <= wallyobj.cols - 1; j++) {
-			int k = i * wallyobj.cols + j;
-			wallyar.push_back(wallyreturndata[k]);
+	for (int i = 0; i <= wallyrows - 1; i++) {
+		for (int j = 0; j <= wallycols - 1; j++) {
+			int k = i * wallycols + j;
+			wallyar.push_back(matrixobj->wallyreturndata[k]);
 		}
 	}
+
+	delete matrixobj;
 
 	double resultarry[5] = {};
 	int comparisons = 0;
-	NNS Searcherobj;
+	NNS* Searcherobj = new NNS;
 
-	for (int i = 0; i <= baseobj.rows - wallyobj.rows; i++) {
-		for (int j = 0; j <= baseobj.cols - wallyobj.cols; j++) {
+	for (int i = 0; i <= baserows - wallyrows; i++) {
+		for (int j = 0; j <= basecols - wallycols; j++) {
 
-			vector <double> tempmatrix;
+			
 
-			for (int a = 0; a <= wallyobj.rows - 1; a++) {
-				for (int b = 0; b <= wallyobj.cols - 1; b++) {
+			for (int a = 0; a <= wallyrows - 1; a++) {
+				for (int b = 0; b <= wallycols - 1; b++) {
 
-					tempmatrix.push_back(baseimagear[((i + a) * baseobj.cols + (j + b))]);
+					Searcherobj->tempmatrix.push_back(baseimagear[((i + a) * basecols + (j + b))]);
 						
 				}
 			}
-			double tempans = Searcherobj.CalcSSD(wallyar, tempmatrix, wallyobj.cols, wallyobj.rows);
+			double tempans = Searcherobj->CalcSSD(wallyar, Searcherobj->tempmatrix, wallycols, wallyrows);
 			//comparisons++;
 			//cout << tempans << "\t \t \t" << comparisons << " comparisons out of " << "710372" << "\n";
 			if (tempans < resultarry[0] || i == 0 && j == 0 ) {
@@ -124,34 +161,29 @@ int main(){
 				resultarry[1] = i;
 				resultarry[2] = j;
 			}
-			tempmatrix.clear();
+			Searcherobj->tempmatrix.clear();
 		};
 	};
 	cout << resultarry[0] << resultarry[1] << resultarry[2] << "\n";
 
-	//CODE BELOW WILL NOT COMPILE 
-	//STACK OVERFLOW
+	delete Searcherobj;
 
-	const int wallysum = wallyobj.rows * wallyobj.cols;
-	const int basesum = baseobj.rows * baseobj.cols;
-
-
-	double temp[wallysum];
-	double highlightedscene[basesum];
+	double temp[1764];
+	Base_Image* baseimgobj = new Base_Image;
 
 	int q = resultarry[1]; //SHOULD BE 144
 	int w = resultarry[2]; //SHOULD BE 162
 	int c = 0;
 
 
-	for (int e = 0; e <= baseobj.rows - 1; e++) {
-		for (int f = 0; f <= baseobj.rows - 1; f++) {
+	for (int e = 0; e <= baserows - 1; e++) {
+		for (int f = 0; f <= baserows - 1; f++) {
 
-			int k = e * baseobj.cols + f;
-			highlightedscene[k] = baseimagear[k];
+			int k = e * basecols + f;
+			baseimgobj->highlightedscene[k] = baseimagear[k];
 
-			if (e >= q && f >= w && e < q + wallyobj.rows && f < w + wallyobj.cols) {
-				highlightedscene[k] = 0;
+			if (e >= q && f >= w && e < q + wallyrows && f < w + wallycols) {
+				baseimgobj->highlightedscene[k] = 0;
 			}
 
 		}
@@ -159,10 +191,11 @@ int main(){
 
 	char name2[21] = "highlightedscene.pgm";
 	char * namept2 = name2;
-	double * data2 = highlightedscene;
+	double * data2 = baseimgobj->highlightedscene;
 
-	write_pgm(namept2, data2, baseobj.rows, baseobj.cols, 255);
+	write_pgm(namept2, data2, baserows, basecols, 255);
 
+	delete baseimgobj;
 
-
+	cout << "Execution complete, Wally Found Successful" << endl;
 }
