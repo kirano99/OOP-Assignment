@@ -28,6 +28,18 @@ public:
 class Base_Image{
 public:
 	double highlightedscene[786432];
+	char name2[21];
+	char * namept2;
+
+	Base_Image() {
+		char name2[21] = "highlightedscene.pgm";
+		char * namept2 = name2;
+		cout << "Base Image obj created" << endl;
+	}
+	virtual ~Base_Image() {
+		cout << "Base Image obj deleted" << endl;
+	}
+
 };
 
 class Ref_Image : public Base_Image {
@@ -79,6 +91,13 @@ class Matrix {
 public:
 	double * basereturndata;
 	double * wallyreturndata;
+
+	Matrix() {
+		cout << "Matrix obj created" << endl;
+	}
+	virtual ~Matrix() {
+		cout << "Matrix obj deleted" << endl;
+	}
 };
 
 int main(){
@@ -186,11 +205,10 @@ int main(){
 
 		}
 	}
-	char name2[21] = "highlightedscene.pgm";
-	char * namept2 = name2;
+
 	double * data2 = baseimgobj->highlightedscene;
 
-	write_pgm(namept2, data2, baserows, basecols, 255);		//outputs the highlighted file
+	write_pgm(baseimgobj->namept2, data2, baserows, basecols, 255);		//outputs the highlighted file
 
 	delete baseimgobj;	//deletes obj to free up memory
 

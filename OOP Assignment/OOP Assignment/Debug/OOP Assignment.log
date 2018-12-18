@@ -1,3 +1,5 @@
-﻿  ReadWrite.cpp
-c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\readwrite.cpp(43): warning C4101: 'j': unreferenced local variable
+﻿  OOP Assignment.cpp
+c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(192): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(193): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\oop assignment.cpp(189): warning C4101: 'temp': unreferenced local variable
   OOP Assignment.vcxproj -> C:\Users\User\Documents\GitHub\OOP-Assignment\OOP Assignment\Debug\OOP Assignment.exe
