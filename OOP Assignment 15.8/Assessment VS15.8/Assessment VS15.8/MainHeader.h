@@ -31,7 +31,7 @@ public:
 	double CalcSSD(vector<unsigned char> matrix1, vector<unsigned char> matrix2, int wallycolums, int wallyrows) {
 		double SumSquareDiff = 0;
 		double difference = 0;
-		for (int i = 0; i <= wallycolums - 1; i++) {
+		for (int i = 0; i <= wallyrows - 1; i++) {
 			for (int j = 0; j <= wallycolums - 1; j++) {
 				int k = i * wallycolums + j;
 				if (matrix1[k] == 255) {
