@@ -38,6 +38,7 @@ public:
 					matrix1[k] = matrix2[k];
 				}
 				difference = matrix1[k] - matrix2[k];
+
 				SumSquareDiff += difference * difference;
 			}
 		}
@@ -101,3 +102,21 @@ public:
 	double * basereturndata;
 	double * wallyreturndata;
 };
+
+class Overload {
+
+	double a;
+	double result;
+
+	friend Overload operator!(Overload a) {
+
+	}
+};
+
+Overload operator!(Overload a) {
+
+	Overload a;
+	a.result = a.a*a.a;
+	return (a);
+
+}
