@@ -1,15 +1,5 @@
-﻿  Assessment VS15.8.cpp
-c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\assessment vs15.8.cpp(54): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned char
-          ]
-c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\assessment vs15.8.cpp(61): warning C4244: 'argument': conversion from 'double' to 'const _Ty', possible loss of data
-          with
-          [
-              _Ty=unsigned char
-          ]
-c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\assessment vs15.8.cpp(101): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\assessment vs15.8.cpp(102): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\assessment vs15.8.cpp(98): warning C4101: 'temp': unreferenced local variable
-  Assessment VS15.8.vcxproj -> C:\Users\User\Documents\GitHub\OOP-Assignment\OOP Assignment 15.8\Assessment VS15.8\Debug\Assessment VS15.8.exe
+﻿  ReadWrite.cpp
+  Assessment VS15.8.cpp
+c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\readwrite.cpp(65): warning C26451: Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).
+c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\mainheader.h(123): warning C26495: Variable 'Matrix::basereturndata' is uninitialized. Always initialize a member variable (type.6).
+c:\users\user\documents\github\oop-assignment\oop assignment 15.8\assessment vs15.8\assessment vs15.8\mainheader.h(137): warning C26495: Variable 'Matrix::basereturndata' is uninitialized. Always initialize a member variable (type.6).

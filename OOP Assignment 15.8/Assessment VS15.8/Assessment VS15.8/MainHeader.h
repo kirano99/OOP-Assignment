@@ -10,13 +10,13 @@ void loading()
 {
 	std::cout << '-' << std::flush;
 	for (;;) {
-		Sleep(10);
+		Sleep(100);
 		std::cout << "\b\\" << std::flush;
-		Sleep(10);
+		Sleep(100);
 		std::cout << "\b|" << std::flush;
-		Sleep(10);
+		Sleep(100);
 		std::cout << "\b/" << std::flush;
-		Sleep(10);
+		Sleep(100);
 		std::cout << "\b-" << std::flush;
 	}
 }
@@ -26,7 +26,7 @@ double* read_text(char *fileName, int sizeR, int sizeC);
 void write_pgm(char *filename, double *data, int sizeR, int sizeC, int Q);
 
 //classes
-class NNS {
+class NNS{
 public:
 	double CalcSSD(vector<unsigned char> matrix1, vector<unsigned char> matrix2, int wallycolums, int wallyrows) {
 		double SumSquareDiff = 0;
@@ -37,6 +37,7 @@ public:
 				if (matrix1[k] == 255) {
 					matrix1[k] = matrix2[k];
 				}
+
 				difference = matrix1[k] - matrix2[k];
 
 				SumSquareDiff += difference * difference;
@@ -45,6 +46,7 @@ public:
 		return SumSquareDiff;
 	}
 	vector <unsigned char> tempmatrix;
+
 };
 
 class Base_Image {
@@ -98,25 +100,47 @@ public:
 };
 
 class Matrix {
+private:
+	int i = 0;
+	int r = 0;
+
 public:
 	double * basereturndata;
 	double * wallyreturndata;
-};
 
-class Overload {
+	char wallyfilename[15] = "Wally_grey.txt";
+	char * wallyfilenamept;
 
-	double a;
-	double result;
+	char wallypgmfilename[15] = "Wally_grey.pgm";
+	char * wallypgmfilenamept;
 
-	friend Overload operator!(Overload a) {
+	char basefilename[20] = "Cluttered_scene.txt";
+	char * basefilenamept;
 
+	char basepgmfilename[20] = "Cluttered_scene.pgm";
+	char * basepgmfilenamept;;
+
+	Matrix() {
+
+		wallyfilenamept = wallyfilename;
+		wallypgmfilenamept = wallypgmfilename;
+		basefilenamept = basefilename;
+		basepgmfilenamept = basepgmfilename;
+
+		cout << "Matrix obj created" << endl;
 	}
+	virtual ~Matrix() {
+		cout << "Matrix obj deleted" << endl;
+	}
+
+	friend Matrix operator--(const Matrix& i);
 };
 
-Overload operator!(Overload a) {
+Matrix operator--(const Matrix& i) {
+	Matrix result;
 
-	Overload a;
-	a.result = a.a*a.a;
-	return (a);
+	result.r = i.i * i.i;
+
+	return result;
 
 }
