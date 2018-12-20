@@ -1,22 +1,44 @@
 
-1 NearestNeighborSearch(matrix1, matrix2, rows, columns)				1  //Beginning of function which takes 2 vectors and 2 integers
-2 {											2
-3	var SumOfSquaredDifferences;							3  //Variable to store the sum of squared differences
-4	var Difference;									4  //Variable to store the difference between the 2 numbers
-5	var k;										5  //Variable to store the loaction of the numbers based on k = i * N + J
-6											6
-7	for (i=0; i<=rows - 1; i++){							7  //Beginning of first loop to iterate the rows
-8		for (j=0; j<=colums - 1; j++){						8  //Beginning of second loop to iterate the colums
-9			k = i * columns + j;						9  //Assign K based on I and J
-10			if (matrix1[k] == 255) {					10 //If statement to search for white spaces in image
-11				matrix1[k] = matrix2[k];				11 //White space is replaced with pixels from base image
-12			}								12
-13			difference = matrix1[k] = matrix2[k];				13 //Calculate difference between the 2 pixels
-14			SumOfSquaredDifferences += difference * difference;		14 //Square the difference and add it to the Sum
-15		}									15
-16	}										16
-17 return SumOfSquaredDifferences;							17 //Function ends and returns the Sum Of Squared Differences to main
-18 };											18 //The lower the SSD, the closest match the selected window is with the base image
+1 NearestNeighborSearch(matrix1, matrix2, rows, columns)				
+2 {											
+3	var SumOfSquaredDifferences;							
+4	var Difference;									
+5	var k;										
+6											
+7	for (i=0; i<=rows - 1; i++){							
+8		for (j=0; j<=colums - 1; j++){						
+9			k = i * columns + j;						
+10			if (matrix1[k] == 255) {					
+11				matrix1[k] = matrix2[k];				
+12			}								
+13			difference = matrix1[k] = matrix2[k];				
+14			SumOfSquaredDifferences += difference * difference;		
+15		}									
+16	}										
+17 return SumOfSquaredDifferences;							
+18 };											
+
+
+
+
+1  //Beginning of function which takes 2 vectors and 2 integers
+2
+3  //Variable to store the sum of squared differences
+4  //Variable to store the difference between the 2 numbers
+5  //Variable to store the loaction of the numbers based on k = i * N + J
+6
+7  //Beginning of first loop to iterate the rows
+8  //Beginning of second loop to iterate the colums
+9  //Assign K based on I and J
+10 //If statement to search for white spaces in image
+11 //White space is replaced with pixels from base image
+12
+13 //Calculate difference between the 2 pixels
+14 //Square the difference and add it to the Sum
+15
+16
+17 //Function ends and returns the Sum Of Squared Differences to main
+18 //The lower the SSD, the closest match the selected window is with the base image
 											
 
 

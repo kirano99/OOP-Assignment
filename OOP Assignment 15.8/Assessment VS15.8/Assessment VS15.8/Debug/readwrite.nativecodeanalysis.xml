@@ -1,17 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<DEFECTS>
-  <DEFECT>
-    <SFA>
-      <FILEPATH>c:\users\user\documents\github\oop-assignment\oop assignment\oop assignment\</FILEPATH>
-      <FILENAME>readwrite.cpp</FILENAME>
-      <LINE>65</LINE>
-      <COLUMN>53</COLUMN>
-    </SFA>
-    <DEFECTCODE>26451</DEFECTCODE>
-    <DESCRIPTION>Arithmetic overflow: Using operator '*' on a 4 byte value and then casting the result to a 8 byte value. Cast the value to the wider type before calling operator '*' to avoid overflow (io.2).</DESCRIPTION>
-    <FUNCTION>write_pgm</FUNCTION>
-    <DECORATED>?write_pgm@@YAXPADPANHHH@Z</DECORATED>
-    <FUNCLINE>40</FUNCLINE>
-    <PATH></PATH>
-  </DEFECT>
-</DEFECTS>
+<DEFECTS></DEFECTS>
